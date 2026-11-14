@@ -1,15 +1,62 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Author author1 = new Author("Лев", "Толстой");
+        Author author2 = new Author("Фёдор", "Достоевский");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        Book book1 = new Book("Война и мир", author1, 1869);
+        Book book2 = new Book("Преступление и наказание", author2, 1866);
+
+        System.out.println("Книга: " + book1.getTitle() + ", автор: " + book1.getAuthor().getFirstName() + " " + book1.getAuthor().getLastName() + ", год: " + book1.getPublicationYear());
+        System.out.println("Книга: " + book2.getTitle() + ", автор: " + book2.getAuthor().getFirstName() + " " + book2.getAuthor().getLastName() + ", год: " + book2.getPublicationYear());
+
+        // Изменяем год публикации первой книги через сеттер
+        book1.setPublicationYear(1873);
+        System.out.println("Обновлённый год публикации книги «" + book1.getTitle() + "»: " + book1.getPublicationYear());
+    }
+}
+
+class Author {
+    private String firstName;
+    private String lastName;
+
+    public Author(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+}
+
+class Book {
+    private String title;
+    private Author author;
+    private int publicationYear;
+
+    public Book(String title, Author author, int publicationYear) {
+        this.title = title;
+        this.author = author;
+        this.publicationYear = publicationYear;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public int getPublicationYear() {
+        return publicationYear;
+    }
+
+    public void setPublicationYear(int publicationYear) {
+        this.publicationYear = publicationYear;
     }
 }
